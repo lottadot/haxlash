@@ -769,8 +769,8 @@ CREATE TABLE preview (
 	introtext text NOT NULL,
 	bodytext text NOT NULL,
 	active ENUM("no","yes") DEFAULT "yes",
-	PRIMARY KEY (preview_id)
-	KEY uid (uid),
+	PRIMARY KEY (preview_id),
+	KEY uid (uid)
 ) TYPE=InnoDB;
 
 
