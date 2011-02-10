@@ -44,8 +44,8 @@ SUBDIRS = `find . -maxdepth 1 -name CVS -prune -o -type d -name [a-zA-Z]\* -prin
 BINFILES = `find bin -name CVS -prune -o -name .git -prune -o -name [a-zA-Z]\* -type f -print`
 SBINFILES = `find sbin -name CVS -prune -o -name .git -prune -o -name [a-zA-Z]\* -type f -print`
 THEMEFILES = `find themes -name CVS -prune -o -name .git -prune -o -name [a-zA-z]\*.pl -print`
-PLUGINFILES = `find plugins themes/*/plugins -name CVS -prune -o -name .git -prune -o -name [a-zA-Z]\*.pl -print`
-TAGBOXFILES = `find tagboxes themes/*/tagboxes -name CVS -prune -o -name .git -prune -o -name [a-zA-Z]\*.pl -print`
+PLUGINFILES = `find plugins -name CVS -prune -o -name .git -prune -o -name [a-zA-Z]\*.pl -print`
+TAGBOXFILES = `find tagboxes -name CVS -prune -o -name .git -prune -o -name [a-zA-Z]\*.pl -print`
 PLUGINSTALL = `find . -name CVS -prune -o -name .git -prune -o -type d -print | egrep 'plugins/[a-zA-Z0-9]+$$'`
 TAGINSTALL = `find . -name CVS -prune -o -name .git -prune -o -type d -print | egrep 'tagboxes/[a-zA-Z]+$$'`
 PLUGINDIRS = `find . -name CVS -prune -o -name .git -prune -o -type d -print | egrep 'plugins$$'`
@@ -199,9 +199,13 @@ install: slash pluginsandtagboxes
 		 		init=/etc/rc.d;					\
 			 fi;							\
 			 if [ $$init ]; then					\
- 			 	$(INSTALL) utils/slash $$init/init.d/;		\
-				ln -s -f ../init.d/slash $$init/rc3.d/S99slash;	\
-				ln -s -f ../init.d/slash $$init/rc6.d/K99slash;	\
+				if [ ! -d $$init/init.d ]; then			\
+ 			 		$(INSTALL) utils/slash $$init;		\
+				else							\
+ 				 	$(INSTALL) utils/slash $$init/init.d/;		\
+					ln -s -f ../init.d/slash $$init/rc3.d/S99slash;	\
+					ln -s -f ../init.d/slash $$init/rc6.d/K99slash;	\
+				fi;						\
 			 else 							\
 				echo "*** Makefile can't determine where your init scripts live."; \
 				if [ $$init ]; then				\
