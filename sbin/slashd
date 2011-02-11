@@ -526,7 +526,7 @@ EOT
 		$task{$file}{entry} = $cron->add_entry($task{$file}{timespec},
 						       $task{$file}{code});
 	}
-	$cron->run(detach=>1);
+	$cron->_build_initial_queue;
 
 }
 
