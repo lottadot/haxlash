@@ -319,7 +319,6 @@ sub _install {
 		htdoc_code	=> ["htdocs/code",		0],
 		htdoc_faq	=> ["htdocs/faq",		0],
 		sbin		=> ["sbin",			1],
-		js		=> ["htdocs/js",		0],
 		image		=> ["htdocs/images",		0],
 		image_award	=> ["htdocs/images/awards",	0],
 		image_banner	=> ["htdocs/images/banners",	0],
