@@ -320,6 +320,7 @@ sub _install {
 		htdoc_faq	=> ["htdocs/faq",		0],
 		sbin		=> ["sbin",			1],
 		js		=> ["htdocs/js",		0],
+		js_jquery	=> ["htdocs/js/jquery",		0],
 		image		=> ["htdocs/images",		0],
 		image_award	=> ["htdocs/images/awards",	0],
 		image_banner	=> ["htdocs/images/banners",	0],
@@ -649,7 +650,7 @@ sub _getList {
 			my($key, $val) = split(/=/, $_, 2);
 			$key = lc $key;
 			if ($key =~ /^(
-				css | htdoc | htdoc_code | htdoc_faq | js |
+				css | htdoc | htdoc_code | htdoc_faq | js | js_jquery |
 				image | image_award | image_banner | image_faq |
 				no-template | include_theme | task | template | sbin | misc | topic
 			)s?$/x) {
