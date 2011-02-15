@@ -30,16 +30,16 @@ sub check_prereq {
         $ok = 0;
         push @mods_needed, $pkg;
         if ($ver == 0) {
-          print "**** Majordomo requires the $pkg module, any version.";
+          print "**** HaXlash requires the $pkg module, any version.";
         }
         else {
-          print "**** Majordomo requires the $pkg module, version $ver or greater!\n";
+          print "**** HaXlash requires the $pkg module, version $ver or greater!\n";
         }
       }
     }
   }
   if (@mods_needed) {
-    print "\n\nSome modules which Majordomo requires were not found.
+    print "\n\nSome modules which HaXlash requires were not found.
 
 If the CPAN module is not supported on your system, you can locate the
 modules by visiting http://search.cpan.org/ with your WWW client.
